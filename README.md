@@ -1,1 +1,1 @@
-# ejercicio-emtech
+# ejercicios-emtech
