@@ -1,0 +1,89 @@
+pasajeros = []
+pasajerosEdad = []
+promedio = []
+promedioBJX = []
+promedioGDL = []
+promedioJAL = []
+vuelos = ["BJX", "GDL", "JAL"]
+destinoAux = ""
+pasajerosInt = 1
+
+def GENERATERESPONSEEDAD():
+    valorBJX = 0
+    valorGDL = 0
+    valorJAL = 0
+    finalvalorBJX = 0
+    finalvalorGDL = 0
+    finalvalorJAL = 0
+    global promedio
+    global promedioBJX
+    global promedioGDL
+    global promedioJAL
+    if len(promedioBJX) > 0:
+        for x in range(len(promedioBJX)):
+            valorBJX = valorBJX + promedioBJX[x]
+            finalvalorBJX = valorBJX/len(promedioBJX)
+        promedio.append(('BJX', finalvalorBJX))
+    if len(promedioGDL) > 0:
+        for x in range(len(promedioGDL)):
+            valorGDL = valorGDL + promedioGDL[x]
+            finalvalorGDL = valorGDL/len(promedioGDL)
+        promedio.append(('GDL', finalvalorGDL))
+    if len(promedioJAL) > 0:
+        for x in range(len(promedioJAL)):
+            valorJAL = valorJAL + promedioJAL[x]
+            finalvalorJAL = valorJAL/len(promedioJAL)
+        promedio.append(('JAL', finalvalorJAL))
+        
+def GENERATELISTEDAD():
+    global promedioBJX
+    global promedioGDL
+    global promedioJAL
+    global pasajerosEdad
+    for x in range(len(pasajerosEdad)):
+            if pasajerosEdad[x][0] == vuelos[0]:
+                promedioBJX.append(pasajerosEdad[x][1])
+            if pasajerosEdad[x][0] == vuelos[1]:
+                promedioGDL.append(pasajerosEdad[x][1])
+            if pasajerosEdad[x][0] == vuelos[2]:
+                promedioJAL.append(pasajerosEdad[x][1])
+
+def VOLARIS():
+    while True:
+        flag = 0
+        global destinoAux
+        global pasajerosInt
+        global pasajeros
+        nombre = input("Ingrese su nombre: ")
+        if nombre == 'x' or nombre == 'X':
+            break
+        edad = int(input("Ingrese su edad: "))
+        Destino = input("Ingrese su destino: ")
+        if len(pasajeros) > 0:
+            flag = 1
+            for i in range(len(vuelos)):
+                if Destino == vuelos[i]:
+                    for x in range(len(pasajeros)):
+                        if pasajeros[x][0] == Destino:
+                            flag = 0
+                            print(pasajeros[x][1])
+                            numPasajeros = pasajeros[x][1]
+                            numPasajeros = numPasajeros + 1
+                            pasajeros[x] = (Destino, numPasajeros)
+                            pasajerosEdad.append((Destino, edad))         
+            if flag == 1:
+                print("Entre al falg")
+                pasajerosEdad.append((Destino, edad))
+                pasajeros.append((Destino, pasajerosInt))
+            
+        else:
+            pasajeros.append((Destino, pasajerosInt))
+            pasajerosEdad.append((Destino, edad))
+            print(pasajerosEdad)
+    
+if __name__ == '__main__':
+    VOLARIS()
+    print('Detalles de vuelos: ' + str(pasajeros))
+    GENERATELISTEDAD()
+    GENERATERESPONSEEDAD()
+    print('Edad promedio por vuelo: ' + str(promedio))

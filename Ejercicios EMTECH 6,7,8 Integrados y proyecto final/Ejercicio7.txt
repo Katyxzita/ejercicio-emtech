@@ -1,0 +1,37 @@
+import json
+import sys
+
+if name == 'main':
+    x = []
+    y = []
+    while True:
+        opcion = int(input("Seleccione la opcion: (1) Añadir cliente, (2) Listar todos los clientes, (3) Listar clientes preferentes, (4) Salir. "))
+        if opcion == 1:
+            print("Introduzca los siguientes datos: ")
+            ID = input("ID del INE/IFE: ")
+            NOMBRE = input("Nombre: ")
+            EDAD = input("Edad: ")
+            DESTINO = input("Destino: ")
+            CLIENTE = input("Cliente preferente ( 1 True o 2 False): ")
+            if int(CLIENTE) == 1:
+                y.append({"Id_Ine": ID, 
+                "Nombre": NOMBRE,
+                #"Edad": EDAD,
+                #"Destino": DESTINO,
+                #"Cliente": CLIENTE
+                })
+            x.append({"Id_Ine": ID, 
+                "Nombre": NOMBRE,
+                #"Edad": EDAD,
+                #"Destino": DESTINO,
+                #"Cliente": CLIENTE
+                })
+        elif opcion == 2:
+            print("Listado de clientes: ")
+            print(x)
+        elif opcion == 3:
+            print("Listado de clientes preferentes: ")
+            print(y)
+        elif opcion == 4: 
+            print("Salir")
+            sys.exit ()
